@@ -5,8 +5,11 @@ const form = document.querySelector(`.form`);
 const input = document.querySelector(`.input_search`);
 const buttonPrev = document.querySelector(`.btn-prev`);
 const buttonNext = document.querySelector(`.btn-next`);
+const buttonInfo = document.querySelector(`.btn-info`);
+const txtInfo = document.querySelector(`.txt-info`);
 
 let searchPokemon = 0;
+var infoIsActive = false
 
 const fetchPokemon = async (pokemon) => {
     const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
@@ -27,6 +30,11 @@ const renderPokemon = async (pokemon) => {
         pokemon_image.style.display = `block`;
         pokemonName.innerHTML = data.name;
         pokemonNumber.innerHTML = data.id;
+        console.log(data)
+        txtInfo.innerHTML = ``;
+        txtInfo.innerHTML += `<h3><strong>Abilities</strong></h3>`;
+        txtInfo.innerHTML += `<p>${data.abilities[0].ability.name}</p>`;
+        txtInfo.innerHTML += `<p>${data.abilities[1].ability.name}</p>`;
         pokemon_image.src = data[`sprites`][`versions`][`generation-v`][`black-white`][`animated`][`front_default`];
         input.value = ``;
         searchPokemon = data.id;
@@ -34,6 +42,7 @@ const renderPokemon = async (pokemon) => {
         pokemon_image.style.display = `none`;
         pokemonName.innerHTML = `Not found`;
         pokemonNumber.innerHTML = ``;
+        txtInfo.innerHTML = ``;
     }
 }
 
@@ -41,6 +50,10 @@ form.addEventListener(`submit`, (event) => {
     event.preventDefault();
     renderPokemon(input.value.toLowerCase());
 });
+
+buttonInfo.addEventListener(`click`, () => {
+    txtInfo.classList.toggle('active');
+})
 
 buttonPrev.addEventListener(`click`, () => {
     if (searchPokemon > 1){ 
