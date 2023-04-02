@@ -4,7 +4,7 @@ Essa é uma aplicação web que permite a busca de informações sobre pokémons
  <img src="https://github.com/stocaline/pokedex/blob/main/images/ImgReadme.png" width="50%">
 
 ## 📕 Como usar
-Este projeto está hospedado no Versel. Você pode acessá-lo em 
+Este projeto está hospedado no Versel. Você pode acessá-lo em https://pokedex-eight-phi.vercel.app/
 ou baixe o projeto e abra o arquivo index.html em seu navegador preferido. A interface é intuitiva e fácil de usar.
 
 ## 📌 Como contribuir
